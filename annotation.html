@@ -69,6 +69,24 @@ canvas {
 
 #fabricCanvas { display: none;
 }
+
+#workspace {
+  display: flex;
+  height: 100vh;
+}
+
+#canvasControls {
+  flex: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#fabricCanvas {
+  flex: 1;
+  border: none;
+}
   </style>
 </head>
 
@@ -87,20 +105,22 @@ canvas {
     <button onclick="loadPDF()">Load PDF</button>
     <canvas id="fabricCanvas" style="border: 1px solid #ccc;"></canvas>
   </div>
-  <div id="canvasControls" style="display: none;">
-    <button onclick="changePenColor('black')">Black Pen</button>
-    <button onclick="changePenColor('red')">Red Pen</button>
-    <button onclick="useEraser()">Eraser</button>
-    <button onclick="addTextbox()">Add Textbox</button>
-    <button onclick="savePDF()">Save PDF</button>
-  </div>
+  <div id="workspace">
+    <div id="canvasControls" style="display: none;">
+      <button onclick="changePenColor('black')">Black Pen</button>
+      <button onclick="changePenColor('red')">Red Pen</button>
+      <button onclick="useEraser()">Eraser</button>
+      <button onclick="addTextbox()">Add Textbox</button>
+      <button onclick="savePDF()">Save PDF</button>
+    </div>
+    <canvas id="fabricCanvas" style="border: 1px solid #ccc;"</canvas>
 </div>
 
   <script>
     let fabricCanvas = new fabric.Canvas('fabricCanvas', {
-      width: 800,
-      height: 600,
-      selection: false
+      width: window.innerWidth,
+      height: window.innerHeight,
+      selection: true
     });
 
     fabricCanvas.lowerCanvasEl.style.display = "none";
