@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Annotator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <style>
+body {
+  font-family: 'Helvetica', sans-serif;
+  background-color: #e9ecef;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #ccc;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label, input, select, button {
+  font-size: 1.1em;
+}
+
+input, select {
+  margin-bottom: 15px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+canvas {
+  border: 1px solid #ccc;
+  margin: auto;
+}
+
+#fabricCanvas { display: none;
+}
+  </style>
+</head>
+
+<body>
+  <header>PDF Annotator</header>
+  <div class="container">
+    <label for="patientName">Patient Name: </label>
+    <input type="text" id="patientName" placeholder="ex: John Doe" style="width: 400px";>
+    <br>
+    <select id="pdfSelect" style="width: 400px;">
+      <option value="Anesthesia Record.pdf">Anesthesia Record</option>
+      <option value="Anesthesia Record 2.pdf">Anesthesia Record 2</option>
+      <option value="Exam Form.pdf">Exam Form</option>
+      <option value="Progress Notes.pdf">Progress Notes</option>
+    </select>
+    <button onclick="loadPDF()">Load PDF</button>
+    <canvas id="fabricCanvas" style="border: 1px solid #ccc;"></canvas>
+  </div>
+  <div id="canvasControls" style="display: none;">
+    <button onclick="changePenColor('black')">Black Pen</button>
+    <button onclick="changePenColor('red')">Red Pen</button>
+    <button onclick="useEraser()">Eraser</button>
+    <button onclick="addTextbox()">Add Textbox</button>
+    <button onclick="savePDF()">Save PDF</button>
+  </div>
+</div>
+
+  <script>
+    let fabricCanvas = new fabric.Canvas('fabricCanvas', {
+      width: 800,
+      height: 600,
+      selection: false
+    });
+
+    fabricCanvas.lowerCanvasEl.style.display = "none";
+
+    function loadPDF() {
+      document.querySelector('.container').style.display = 'block';
+      const selectedPDF = document.getElementById('pdfSelect').value;
+
+      // Create a temporary canvas to first render the PDF
+      const tempCanvas = document.createElement('canvas');
+      const tempContext = tempCanvas.getContext('2d');
+
+      pdfjsLib.getDocument(selectedPDF).promise.then((pdfDoc) => {
+        pdfDoc.getPage(1).then((page) => {
+          const scale = 1.5;
+          const viewport = page.getViewport({ scale });
+          tempCanvas.width = viewport.width;
+          tempCanvas.height = viewport.height;
+
+          const renderContext = {
+            canvasContext: tempContext,
+            viewport: viewport
+          };
+
+          page.render(renderContext).promise.then(() => {
+            const imgSrc = tempCanvas.toDataURL();
+            fabricCanvas.setBackgroundImage(imgSrc, fabricCanvas.renderAll.bind(fabricCanvas), {
+              scaleX: fabricCanvas.width / tempCanvas.width,
+              scaleY: fabricCanvas.height / tempCanvas.height,
+            });
+
+            fabricCanvas.isDrawingMode = true;
+            fabricCanvas.freeDrawingBrush.width = 3;
+            fabricCanvas.freeDrawingBrush.color = "#000000";
+          });
+        });
+      });
+      fabricCanvas.lowerCanvasEl.style.display = "block";
+      document.getElementById("canvasControls").style.display = "block";
+    }
+
+    function changePenColor(color) {
+      fabricCanvas.isDrawingMode = true;
+      fabricCanvas.freeDrawingBrush.color = color;
+      fabricCanvas.freeDrawingBrush.width = 3;  // Smaller pen size
+    }
+
+    function useEraser() {
+      fabricCanvas.isDrawingMode = true;
+      fabricCanvas.freeDrawingBrush.color = 'white';  // Assume the background is white
+      fabricCanvas.freeDrawingBrush.width = 10;  // Larger size for easier erasing
+    }
+
+    function addTextbox() {
+      const textbox = new fabric.Textbox('your text', {
+        left: 10,
+        top: 10,
+        width: 150,
+        fontSize: 16
+      });
+      fabricCanvas.add(textbox).setActiveObject(textbox);
+    }
+
+    function savePDF() {
+      alert('Save Successful');
+      fabricCanvas.clear();
+
+      const selectedPDF = document.getElementById("pdfSelect").value;
+      const fileName = `${document.getElementById("patientName").value}_${selectedPDF.replace('.pdf', '')}_annotated.pdf`;
+
+      const pdf = new jsPDF('p', 'mm', [fabricCanvas.width, fabricCanvas.height]);
+      pdf.addImage(
+        fabricCanvas.toDataURL('image/jpeg', 1.0),
+        'JPEG',
+        0,
+        0,
+        fabricCanvas.width,
+        fabricCanvas.height
+      );
+
+      pdf.save(fileName);
+    }
+  </script>
+</body>
+</html>
