@@ -98,9 +98,9 @@ canvas {
 
   <script>
     let fabricCanvas = new fabric.Canvas('fabricCanvas', {
-      width: 900,
-      height: 1280,
-      selection: false
+      width: window.innerWidth,
+      height: window.innerHeight,
+      selection: true
     });
 
     fabricCanvas.lowerCanvasEl.style.display = "none";
