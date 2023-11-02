@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/17bc197ddd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="hero">
+
+        <form>
+            <ul class="accordion">
+                <li>
+                    <input type="radio" name="accordion" id="first">
+                    <label for="first" class="accordion-label">REGISTRATION</label>
+                    <div class="content">
+
+                    
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="firstname" required>
+                                <label for="firstname"><i class="fas fa-user"></i> First Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="lastname" required>
+                                <label for="lastname">Last Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="middleinitial" required>
+                                <label for="middleinitial">Middle Initial</label>
+                            </div>
+                        </div>
+                    
+                        <div class="input-group">
+                            <input type="text" id="phoneno" required>
+                            <label for="phoneno"><i class="fas fa-comments"></i> Phone No. </label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" required>
+                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="city" required>
+                                <label for="city"><i class="fa-solid fa-location-dot"></i> City</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="state" required>
+                                <label for="state">State</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="zipcode" required>
+                                <label for="zipcode">Zip Code</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="date" id="dob" required>
+                                <label for="dob" style="top: -35px; font-size: 14px;">Date of Birth</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="driver"required>
+                                <label for="driver">Driver's License No.</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="ssn" placeholder="   -  -    " required>
+                                <label for="ssn">Social Security No.</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <select name="maritalstatus" id="maritalstatus" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="married">Married</option>
+                                    <option value="single">Single</option>
+                                    <option value="divorced">Divorced</option>
+                                    <option value="separated">Separated</option>
+                                    <option value="widowed">Widowed</option>
+                                </select>
+                                <label for="maritalstatus">Marital Status</label>
+                            </div>
+                            <div class="input-group">
+                                <select name="studentstatus" id="studentstatus" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="fulltime">Full time</option>
+                                    <option value="parttime">Part time</option>
+                                </select>
+                                <label for="studentstatus">Student Status</label>
+                            </div>
+                            <div class="input-group">
+                                <select name="sex" id="sex"required>
+                                    <option value="" disabled selected></option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <label for="sex">Sex</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="text" id="employer"required>
+                            <label for="employer">Employer</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="emercencycontact"required>
+                            <label for="emergencycontact">Emergency Contact</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="personwith">
+                                <label for="personwith">Person With</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="relationto">
+                                <label for="relationto">Relationship</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="theirphoneno">
+                                <label for="theirphoneno">Their Phone No.</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </li>
+                <li>
+                    <input type="radio" name="accordion" id="second">
+                    <label for="second" class="accordion-label">IF PATIENT IS UNDER 19, PARENT MUST FILL THIS OUT</label>
+                    <div class="content">
+
+
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="parentfirstname">
+                                <label for="parentfirstname"><i class="fas fa-user"></i> First Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="parentlastname">
+                                <label for="parentlastname">Last Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="parentmiddleinitial">
+                                <label for="parentmiddleinitial">Middle Initial</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="relationtopatient">
+                            <label for="relationtopatient">Relation To Patient</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="parentaddress">
+                            <label for="parentaddress">Address</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="citystatezip">
+                            <label for="citystatezip">City, State, Zip</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="parenthomepho">
+                                <label for="parenthomepho">Home Phone</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="parentworkpho">
+                                <label for="parentworkpho">Work Phone</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="parentcellpho">
+                                <label for="parentcellpho">Cell Phone</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="date" id="parentdob">
+                                <label for="parentdob" style="top: -35px; font-size: 14px;">Date of Birth</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="parentssn">
+                                <label for="parentssn">Social Security No.</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="parentlicenseno">
+                                <label for="parentlicenseno">License No.</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="parentemployer">
+                            <label for="parentemployer">Responsible Party Employer</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="parentempaddress">
+                            <label for="parentempaddress">Address of Employer</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="empcitystatezip">
+                            <label for="empcitystatezip">City, State, Zip</label>
+                        </div>
+                        <div class="input-group">
+                            <select name="employmentstatus" id="employmentstatus">
+                                <option value="" disabled selected></option>
+                                <option value="fulltime">Full time</option>
+                                <option value="parttime">Part time</option>
+                                <option value="unemployed">Unemployed</option>
+                                <option value="retired">Retired</option>
+                            </select>
+                            <label for="studentstatus">Student Status</label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" name="accordion" id="third">
+                    <label for="third" class="accordion-label"> PRIMARY MEDICAL INSURANCE INFORMATION FORM</label>
+                    <div class="content">
+
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="insuranceidno"required>
+                                <label for="insuranceidno">Insurance ID No.</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="groupno"required>
+                                <label for="groupno">Group No.</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="militarypaygrade"required>
+                                <label for="militarypaygrade">Military Pay Grade</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="nameofinsured"required>
+                            <label for="nameofinsured">Name of Insured</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insurancecompany"required>
+                            <label for="insurancecompany">Insurance Company Name</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="insuredssn"required>
+                                <label for="insuredssn">Insured SSN</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="date" id="insureddob" required>
+                                <label for="insureddob" style="top: -35px; font-size: 14px;">Insured Date of Birth</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredemployer"required>
+                            <label for="insuredemployer">Insured Employer</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredemployeraddress"required>
+                            <label for="insuredemployeraddress">Address</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredemployercitystatezip"required>
+                            <label for="insuredemployercitystatezip">City, State, Zip</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredrelationshiptopatient"required>
+                            <label for="insuredrelationshiptopatient">Relationship to Patient</label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" name="accordion" id="fourth">
+                    <label for="fourth" class="accordion-label"> PRIMARY DENTAL INSURANCE INFORMATION FORM</label>
+                    <div class="content">
+
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="insuranceidno"required>
+                                <label for="insuranceidno">Insurance ID No.</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="groupno"required>
+                                <label for="groupno">Group No.</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="militarypaygrade"required>
+                                <label for="militarypaygrade">Military Pay Grade</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="nameofinsured"required>
+                            <label for="nameofinsured">Name of Insured</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insurancecompany"required>
+                            <label for="insurancecompany">Insurance Company Name</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <input type="text" id="insuredssn"required>
+                                <label for="insuredssn">Insured SSN</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="date" id="insureddob" required>
+                                <label for="insureddob" style="top: -35px; font-size: 14px;">Insured Date of Birth</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredemployer"required>
+                            <label for="insuredemployer">Insured Employer</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredemployeraddress"required>
+                            <label for="insuredemployeraddress">Address</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredemployercitystatezip"required>
+                            <label for="insuredemployercitystatezip">City, State, Zip</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="insuredrelationshiptopatient"required>
+                            <label for="insuredrelationshiptopatient">Relationship to Patient</label>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <button type="submit">SUBMIT <i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
+</body>
+</html>
