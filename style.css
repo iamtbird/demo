@@ -45,6 +45,7 @@ label{
 }
 button{
     padding: 10px 0;
+    margin: auto;
     color: #fff;
     outline: none;
     background: transparent;
