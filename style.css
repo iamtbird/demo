@@ -68,7 +68,7 @@ input:valid~label{
 }
 .accordion{
     margin: 60px auto;
-    width: 600px;
+    width: 100%;
 }
 .accordion li{
     list-style: none;
